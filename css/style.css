@@ -383,6 +383,7 @@ body {
 #header-outer {
   height: 100%;
   position: relative;
+  background-color:black;
 }
 #header-inner {
   display: block;
