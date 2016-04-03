@@ -3,17 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | XeBin</title>
+  <title>hadoop源码读书笔记 | XeBin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="XeBin">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="#hadoop源码读书笔记
+##一，map的输入
+
+###1.1，KeyValueTextInputFormat类
+  KeyValueTextInputFormat格式类读取一个文本文件，然后，把它分割成为若干个记录，一行作为一个记录。通过每一行
+中的tab字符把每一行进一步分割成为键值对。如果某一行中没有tab字符，那么整个行会被认为是关键字，值对象则为空。如
+果tab字符是一行中的最后一个位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hadoop源码读书笔记">
+<meta property="og:url" content="http://yoursite.com/2016/04/03/hadoop源码读书笔记/index.html">
 <meta property="og:site_name" content="XeBin">
-<meta property="og:description">
+<meta property="og:description" content="#hadoop源码读书笔记
+##一，map的输入
+
+###1.1，KeyValueTextInputFormat类
+  KeyValueTextInputFormat格式类读取一个文本文件，然后，把它分割成为若干个记录，一行作为一个记录。通过每一行
+中的tab字符把每一行进一步分割成为键值对。如果某一行中没有tab字符，那么整个行会被认为是关键字，值对象则为空。如
+果tab字符是一行中的最后一个位">
+<meta property="og:updated_time" content="2016-04-03T15:15:17.440Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XeBin">
-<meta name="twitter:description">
+<meta name="twitter:title" content="hadoop源码读书笔记">
+<meta name="twitter:description" content="#hadoop源码读书笔记
+##一，map的输入
+
+###1.1，KeyValueTextInputFormat类
+  KeyValueTextInputFormat格式类读取一个文本文件，然后，把它分割成为若干个记录，一行作为一个记录。通过每一行
+中的tab字符把每一行进一步分割成为键值对。如果某一行中没有tab字符，那么整个行会被认为是关键字，值对象则为空。如
+果tab字符是一行中的最后一个位">
   
   
     <link rel="icon" href="/favicon.png">
@@ -123,58 +142,70 @@
   
 </aside>
         
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/04/03/hadoop源码读书笔记/" class="archive-article-date">
-  <time datetime="2016-04-03T15:14:51.000Z" itemprop="datePublished">Apr 3</time>
+        <section id="main"><article id="post-hadoop源码读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/03/hadoop源码读书笔记/" class="article-date">
+  <time datetime="2016-04-03T15:14:51.000Z" itemprop="datePublished">2016-04-03</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/03/hadoop源码读书笔记/">hadoop源码读书笔记</a>
+    <h1 class="article-title" itemprop="name">
+      hadoop源码读书笔记
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/04/03/MR应用案例/" class="archive-article-date">
-  <time datetime="2016-04-03T07:32:28.000Z" itemprop="datePublished">Apr 3</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/03/MR应用案例/">MR应用案例</a>
-    </h1>
-  
+        <p>#hadoop源码读书笔记</p>
+<p>##一，map的输入</p>
+<ul>
+<li><p>###1.1，KeyValueTextInputFormat类</p>
+<pre><code>  KeyValueTextInputFormat格式类读取一个文本文件，然后，把它分割成为若干个记录，一行作为一个记录。通过每一行
+中的tab字符把每一行进一步分割成为键值对。如果某一行中没有tab字符，那么整个行会被认为是关键字，值对象则为空。如
+果tab字符是一行中的最后一个位置，框架将会忽略这个tab字符。
+    假设一个输入文件有如下三行数据，TAB表示US-ASCII水平字符(0x09)：
+        key1TABvalue1
+        key2
+        key3TABvalue3TABvalue4
 
-    </header>
+    框架会传入如下键值对到你的mapper：
+        Key1, value1
+        Key2
+        Key3, value3TABvalue4
+</code></pre></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimkpmz1s000101el5zyzly6h" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/03/MR应用案例/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MR应用案例</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
 </section>
       </div>
       <footer id="footer">
