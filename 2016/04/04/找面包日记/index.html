@@ -3,17 +3,39 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016/4 | XeBin</title>
+  <title>找面包日记 | XeBin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="XeBin">
-<meta property="og:url" content="http://yoursite.com/archives/2016/04/index.html">
+  <meta name="description" content="#找面包日记
+##一，mysql数据库
+
+###1.1，分页查询1.1.1， mysql最基本的分页查询方式：
+        select * from content order by id desc limit 0, 10
+深坑分析：如果是limit 100000,100，需要扫描100100行，在一个高并发的应用里，每次查询需要
+扫描超过10W行，性能肯定大打折扣。
+1.1.2， 分页查询">
+<meta property="og:type" content="article">
+<meta property="og:title" content="找面包日记">
+<meta property="og:url" content="http://yoursite.com/2016/04/04/找面包日记/index.html">
 <meta property="og:site_name" content="XeBin">
-<meta property="og:description">
+<meta property="og:description" content="#找面包日记
+##一，mysql数据库
+
+###1.1，分页查询1.1.1， mysql最基本的分页查询方式：
+        select * from content order by id desc limit 0, 10
+深坑分析：如果是limit 100000,100，需要扫描100100行，在一个高并发的应用里，每次查询需要
+扫描超过10W行，性能肯定大打折扣。
+1.1.2， 分页查询">
+<meta property="og:updated_time" content="2016-04-03T16:30:42.428Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XeBin">
-<meta name="twitter:description">
+<meta name="twitter:title" content="找面包日记">
+<meta name="twitter:description" content="#找面包日记
+##一，mysql数据库
+
+###1.1，分页查询1.1.1， mysql最基本的分页查询方式：
+        select * from content order by id desc limit 0, 10
+深坑分析：如果是limit 100000,100，需要扫描100100行，在一个高并发的应用里，每次查询需要
+扫描超过10W行，性能肯定大打折扣。
+1.1.2， 分页查询">
   
   
     <link rel="icon" href="/favicon.png">
@@ -127,77 +149,75 @@
   
 </aside>
         
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/04/04/找面包日记/" class="archive-article-date">
-  <time datetime="2016-04-03T16:30:10.000Z" itemprop="datePublished">Apr 4</time>
+        <section id="main"><article id="post-找面包日记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/04/找面包日记/" class="article-date">
+  <time datetime="2016-04-03T16:30:10.000Z" itemprop="datePublished">2016-04-04</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/04/找面包日记/">找面包日记</a>
+    <h1 class="article-title" itemprop="name">
+      找面包日记
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/04/03/hadoop源码读书笔记/" class="archive-article-date">
-  <time datetime="2016-04-03T15:14:51.000Z" itemprop="datePublished">Apr 3</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/03/hadoop源码读书笔记/">hadoop源码读书笔记</a>
-    </h1>
-  
+        <p>#找面包日记</p>
+<p>##一，mysql数据库</p>
+<ul>
+<li><p>###1.1，分页查询<br><strong>1.1.1， mysql最基本的分页查询方式：</strong></p>
+<pre><code>        select * from content order by id desc limit 0, 10
+深坑分析：如果是limit 100000,100，需要扫描100100行，在一个高并发的应用里，每次查询需要
+扫描超过10W行，性能肯定大打折扣。
+</code></pre><p><strong>1.1.2， 分页查询优化</strong></p>
+<pre><code>优化一：主键范围查找
+    select * from table where xxx in (1,2,3) and id &gt;= #minId# and id &lt; #maxId#
+缺点：主键分布离散、不连续时，查询命中率大幅度降低，会产生很多无用查询。
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/04/03/MR应用案例/" class="archive-article-date">
-  <time datetime="2016-04-03T07:32:28.000Z" itemprop="datePublished">Apr 3</time>
-</a>
+优化二：
+    select * from table where id &gt;= #minId# and xxx in (1,2,3) limit 200
+性能分析：这种分页方式避免了使用 limit 时候遍历 offset 带来的无谓的性能开销，避免了对 id 
+使用左右范围查询时候 id 的离散分布对命中率的影响，代价是需要在内存中遍历结果集获取当前分
+页中 id 的最大值，局限是只能在对全表唯一的字段做分页时使用。
+</code></pre></li>
+</ul>
+<p>####参考文献</p>
+<ul>
+<li>1，<a href="https://blog.jamespan.me/2015/01/22/trick-of-paging-query/" target="_blank" rel="external">https://blog.jamespan.me/2015/01/22/trick-of-paging-query/</a></li>
+</ul>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/03/MR应用案例/">MR应用案例</a>
-    </h1>
-  
-
-    </header>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimksbcsf00027tel8ba4s6gv" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/03/hadoop源码读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hadoop源码读书笔记</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
 </section>
       </div>
       <footer id="footer">

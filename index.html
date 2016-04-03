@@ -78,7 +78,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -88,6 +88,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/04/04/找面包日记/">找面包日记</a>
+          </li>
         
           <li>
             <a href="/2016/04/03/hadoop源码读书笔记/">hadoop源码读书笔记</a>
@@ -124,6 +128,65 @@
 </aside>
         
         <section id="main">
+  
+    <article id="post-找面包日记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/04/找面包日记/" class="article-date">
+  <time datetime="2016-04-03T16:30:10.000Z" itemprop="datePublished">2016-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/04/找面包日记/">找面包日记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#找面包日记</p>
+<p>##一，mysql数据库</p>
+<ul>
+<li><p>###1.1，分页查询<br><strong>1.1.1， mysql最基本的分页查询方式：</strong></p>
+<pre><code>        select * from content order by id desc limit 0, 10
+深坑分析：如果是limit 100000,100，需要扫描100100行，在一个高并发的应用里，每次查询需要
+扫描超过10W行，性能肯定大打折扣。
+</code></pre><p><strong>1.1.2， 分页查询优化</strong></p>
+<pre><code>优化一：主键范围查找
+    select * from table where xxx in (1,2,3) and id &gt;= #minId# and id &lt; #maxId#
+缺点：主键分布离散、不连续时，查询命中率大幅度降低，会产生很多无用查询。
+
+优化二：
+    select * from table where id &gt;= #minId# and xxx in (1,2,3) limit 200
+性能分析：这种分页方式避免了使用 limit 时候遍历 offset 带来的无谓的性能开销，避免了对 id 
+使用左右范围查询时候 id 的离散分布对命中率的影响，代价是需要在内存中遍历结果集获取当前分
+页中 id 的最大值，局限是只能在对全表唯一的字段做分页时使用。
+</code></pre></li>
+</ul>
+<p>####参考文献</p>
+<ul>
+<li>1，<a href="https://blog.jamespan.me/2015/01/22/trick-of-paging-query/" target="_blank" rel="external">https://blog.jamespan.me/2015/01/22/trick-of-paging-query/</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimksbcsf00027tel8ba4s6gv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-hadoop源码读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -169,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimkpmz1s000101el5zyzly6h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimksbcsc00017telppkvn976" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimkpmz1l000001elxmyt8xdo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimksbcs500007tel6400fh7j" class="article-share-link">Share</a>
       
       
     </footer>
