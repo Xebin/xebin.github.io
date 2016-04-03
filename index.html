@@ -152,13 +152,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>#找面包日记</p>
-<p>##一，mysql数据库</p>
-<ul>
-<li><p>###1.1，分页查询<br><strong>1.1.1， mysql最基本的分页查询方式：</strong></p>
+<h2 id="一，mysql数据库"><a href="#一，mysql数据库" class="headerlink" title="一，mysql数据库"></a>一，mysql数据库</h2><ul>
+<li><h3 id="1-1，分页查询"><a href="#1-1，分页查询" class="headerlink" title="1.1，分页查询"></a>1.1，分页查询</h3><p><strong> 1.1.1， mysql最基本的分页查询方式：</strong></p>
 <pre><code>        select * from content order by id desc limit 0, 10
 深坑分析：如果是limit 100000,100，需要扫描100100行，在一个高并发的应用里，每次查询需要
 扫描超过10W行，性能肯定大打折扣。
-</code></pre><p><strong>1.1.2， 分页查询优化</strong></p>
+</code></pre><p><strong> 1.1.2， 分页查询优化</strong></p>
 <pre><code>优化一：主键范围查找
     select * from table where xxx in (1,2,3) and id &gt;= #minId# and id &lt; #maxId#
 缺点：主键分布离散、不连续时，查询命中率大幅度降低，会产生很多无用查询。
@@ -170,15 +169,14 @@
 页中 id 的最大值，局限是只能在对全表唯一的字段做分页时使用。
 </code></pre></li>
 </ul>
-<p>####参考文献</p>
-<ul>
+<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><ul>
 <li>1，<a href="https://blog.jamespan.me/2015/01/22/trick-of-paging-query/" target="_blank" rel="external">https://blog.jamespan.me/2015/01/22/trick-of-paging-query/</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimksbcsf00027tel8ba4s6gv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimkse9ox000294elmsjketit" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimksbcsc00017telppkvn976" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimkse9o8000094elbmsdbunh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimksbcs500007tel6400fh7j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimkse9om000194elfv8z3958" class="article-share-link">Share</a>
       
       
     </footer>
