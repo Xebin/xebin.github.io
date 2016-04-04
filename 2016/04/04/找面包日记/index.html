@@ -5,37 +5,28 @@
   
   <title>找面包日记 | XeBin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#找面包日记
-一，mysql数据库
-1.1，分页查询 1.1.1， mysql最基本的分页查询方式：
-        select * from content order by id desc limit 0, 10
-深坑分析：如果是limit 100000,100，需要扫描100100行，在一个高并发的应用里，每次查询需要
-扫描超过10W行，性能肯定大打折扣。
- 1.1.2， 分页查询优化
-优">
+  <meta name="description" content="找面包日记一，mysql数据库
+1.1，分页查询我的解释是：数据库有一大堆符合条件查询的数据，我们限制每页显示多少条数据，这样就叫分页。
+ 1.1.1， mysql最基本的分页查询方式：
+    select * from table where xxx in (1,2,3) order by id limit #offset#, 200    
+    select * from content">
 <meta property="og:type" content="article">
 <meta property="og:title" content="找面包日记">
 <meta property="og:url" content="http://yoursite.com/2016/04/04/找面包日记/index.html">
 <meta property="og:site_name" content="XeBin">
-<meta property="og:description" content="#找面包日记
-一，mysql数据库
-1.1，分页查询 1.1.1， mysql最基本的分页查询方式：
-        select * from content order by id desc limit 0, 10
-深坑分析：如果是limit 100000,100，需要扫描100100行，在一个高并发的应用里，每次查询需要
-扫描超过10W行，性能肯定大打折扣。
- 1.1.2， 分页查询优化
-优">
-<meta property="og:updated_time" content="2016-04-03T16:32:57.856Z">
+<meta property="og:description" content="找面包日记一，mysql数据库
+1.1，分页查询我的解释是：数据库有一大堆符合条件查询的数据，我们限制每页显示多少条数据，这样就叫分页。
+ 1.1.1， mysql最基本的分页查询方式：
+    select * from table where xxx in (1,2,3) order by id limit #offset#, 200    
+    select * from content">
+<meta property="og:updated_time" content="2016-04-04T05:53:15.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="找面包日记">
-<meta name="twitter:description" content="#找面包日记
-一，mysql数据库
-1.1，分页查询 1.1.1， mysql最基本的分页查询方式：
-        select * from content order by id desc limit 0, 10
-深坑分析：如果是limit 100000,100，需要扫描100100行，在一个高并发的应用里，每次查询需要
-扫描超过10W行，性能肯定大打折扣。
- 1.1.2， 分页查询优化
-优">
+<meta name="twitter:description" content="找面包日记一，mysql数据库
+1.1，分页查询我的解释是：数据库有一大堆符合条件查询的数据，我们限制每页显示多少条数据，这样就叫分页。
+ 1.1.1， mysql最基本的分页查询方式：
+    select * from table where xxx in (1,2,3) order by id limit #offset#, 200    
+    select * from content">
   
   
     <link rel="icon" href="/favicon.png">
@@ -100,7 +91,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -110,6 +101,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/04/04/java易错点总结/">java易错点总结</a>
+          </li>
         
           <li>
             <a href="/2016/04/04/找面包日记/">找面包日记</a>
@@ -171,13 +166,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#找面包日记</p>
-<h2 id="一，mysql数据库"><a href="#一，mysql数据库" class="headerlink" title="一，mysql数据库"></a>一，mysql数据库</h2><ul>
-<li><h3 id="1-1，分页查询"><a href="#1-1，分页查询" class="headerlink" title="1.1，分页查询"></a>1.1，分页查询</h3><p><strong> 1.1.1， mysql最基本的分页查询方式：</strong></p>
-<pre><code>        select * from content order by id desc limit 0, 10
+        <h1 id="找面包日记"><a href="#找面包日记" class="headerlink" title="找面包日记"></a>找面包日记</h1><h2 id="一，mysql数据库"><a href="#一，mysql数据库" class="headerlink" title="一，mysql数据库"></a>一，mysql数据库</h2><ul>
+<li><h3 id="1-1，分页查询"><a href="#1-1，分页查询" class="headerlink" title="1.1，分页查询"></a>1.1，分页查询</h3><pre><code>我的解释是：数据库有一大堆符合条件查询的数据，我们限制每页显示多少条数据，这样就叫分页。
+</code></pre><p><strong> 1.1.1， mysql最基本的分页查询方式：</strong></p>
+<pre><code>    select * from table where xxx in (1,2,3) order by id limit #offset#, 200    
+    select * from content order by id desc limit 0, 10
 深坑分析：如果是limit 100000,100，需要扫描100100行，在一个高并发的应用里，每次查询需要
 扫描超过10W行，性能肯定大打折扣。
-</code></pre><p><strong> 1.1.2， 分页查询优化</strong></p>
+</code></pre><p><strong> 1.1.2， 分页查询优化 </strong></p>
 <pre><code>优化一：主键范围查找
     select * from table where xxx in (1,2,3) and id &gt;= #minId# and id &lt; #maxId#
 缺点：主键分布离散、不连续时，查询命中率大幅度降低，会产生很多无用查询。
@@ -196,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimkse9ox000294elmsjketit" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimln4dxd0002rfel56nkq07c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,6 +200,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/04/04/java易错点总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          java易错点总结
+        
+      </div>
+    </a>
   
   
     <a href="/2016/04/03/hadoop源码读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
