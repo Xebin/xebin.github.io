@@ -173,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/java易错点总结/" data-id="cimm1we3c0002thelkj3obn4a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/java易错点总结/" data-id="cimm24eph0002w9ell820fmxi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimm1we3f0003thelotpg4o4v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimm24epk0003w9elm2ucussc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -285,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimm1we390001thelwjzai7xx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimm24epf0001w9el3g2z71s8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -367,7 +367,7 @@
         sort1 1,2
         sort2 3,54,77
         sort6 20,22,221
-</code></pre><p>###4.2解决思路<br>    4.2.1、首先，在思考解决问题思路时，我们先应该深刻的理解MapReduce处理数据的整个流程，这是最基础的，不然的话是不可能<br>    找到解决问题的思路的。我描述一下MapReduce处理数据的大概简单流程：首先，MapReduce框架通过getSplit方法实现对原始文件<br>    的切片之后，每一个切片对应着一个map task，inputSplit输入到Map函数进行处理，中间结果经过环形缓冲区的排序,然后分区、<br>    自定义二次排序（如果有的话）和合并，再通过shuffle操作将数据传输到reduce task端，reduce端也存在着缓冲区，数据也会在<br>    缓冲区和磁盘中进行合并排序等操作，然后对数据按照Key值进行分组，然后没处理完一个分组之后就会去调用一次reduce函数，<br>    最终输出结果。大概流程我画了一下，如下图：<br>    <img src="/data/gitpage/source/images/mr流程图.jpg" alt="mr流程图.jpg"></p>
+</code></pre><p>###4.2解决思路<br>    4.2.1、首先，在思考解决问题思路时，我们先应该深刻的理解MapReduce处理数据的整个流程，这是最基础的，不然的话是不可能<br>    找到解决问题的思路的。我描述一下MapReduce处理数据的大概简单流程：首先，MapReduce框架通过getSplit方法实现对原始文件<br>    的切片之后，每一个切片对应着一个map task，inputSplit输入到Map函数进行处理，中间结果经过环形缓冲区的排序,然后分区、<br>    自定义二次排序（如果有的话）和合并，再通过shuffle操作将数据传输到reduce task端，reduce端也存在着缓冲区，数据也会在<br>    缓冲区和磁盘中进行合并排序等操作，然后对数据按照Key值进行分组，然后没处理完一个分组之后就会去调用一次reduce函数，<br>    最终输出结果。大概流程我画了一下，如下图：<br>    <img src="http://7xskxa.com2.z0.glb.clouddn.com/mr%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg" alt="mr流程图.jpg"></p>
 <p>###4.3，核心代码，<br>       源码参考，有解释：<a href="https://github.com/Xebin/MR-/blob/master/hadoop%2Fsrc%2Fmr%2FsecondSort%2FSecondSortMR.java" target="_blank" rel="external">https://github.com/Xebin/MR-/blob/master/hadoop%2Fsrc%2Fmr%2FsecondSort%2FSecondSortMR.java</a></p>
 <p>##5，topK问题</p>
 <p>###5.1，概述<br>            对于Top K的问题，首先要在每个block/分片之中找到这部分的Top K。并且由于只能输出一次，所以输出的工作需要在<br>        cleanup方法之中进行，注意cleanup（）是在每个map任务最后阶段执行。为了简单，使用的是java之中的TreeMap，因为这<br>        个数据结构天生就带有排序功能。 </p>
@@ -378,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimm1we2v0000thelgyez4dp4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimm24ep90000w9elnh6zfgzr" class="article-share-link">Share</a>
       
       
     </footer>
