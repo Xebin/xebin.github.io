@@ -188,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/05/统计学习方法读书笔记/" data-id="cimnhew2l000678eld3q3pk2p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/05/统计学习方法读书笔记/" data-id="cimnhk7l300068cel37g78uh5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -226,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/05/正则表达式背诵/" data-id="cimnhew2j000478elzesdv8hh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/05/正则表达式背诵/" data-id="cimnhk7kq00048celcpuolyhk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -267,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/深入理解java异常处理机制/" data-id="cimnhew2k000578elwxgvc97x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/深入理解java异常处理机制/" data-id="cimnhk7ks00058celb2tefj8p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -318,7 +318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/java易错点总结/" data-id="cimnhew2e000278elntpdgmhw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/java易错点总结/" data-id="cimnhk7kl00028cel5rj6bd02" class="article-share-link">Share</a>
       
       
     </footer>
@@ -394,31 +394,20 @@ Durability)属性是数据库事务的灵魂:
 让其他事务(例如账户查询)看到A账户已经扣除款项a但B账户却还没有增加款项a的状态。
 </code></pre></li>
 <li><h5 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a><strong>持久性</strong></h5><pre><code>事务完成后，它对于数据库的影响是永久性的，即使系统出现各种异常也是如此。
-
-出于性能考虑，许多数据库允许使用者选择牺牲隔离属性来换取并发度，从而获得性能的提升。SQL定义
-4种隔离级别：
-    Read uncommitted(RU)：读取未提交的数据，即其他事务已经修改但还未commit的数据，这是最低的
-                          隔离级别；
-    Read committe(RC)：在一个事务中，对同一个项，前面的读取跟后面的读取结果可能不一样，例如
-                       第一次读取时另一个事务的修改还没有提交，第二次读取时已经提交了；
-    Repeatable read(RR)：可重复读取，在一个事务中，对同一个项，前面的读取跟后面的读取结果一样；
-    Serializable (S)：可序列化，即数据库的事务是可串行化执行的，就像一个事务执行的时候没有别
-                      的事务同时在执行，这是最高的隔离级别；
-
-隔离级别的降低可能导致读到脏数据或者事务执行异常，例如：
+</code></pre></li>
+</ul>
+<p>出于性能考虑，许多数据库允许使用者选择牺牲隔离属性来换取并发度，从而获得性能的提升。SQL定义<br>        4种隔离级别：<br>            Read uncommitted(RU)：读取未提交的数据，即其他事务已经修改但还未commit的数据，这是最低的<br>                                  隔离级别；<br>            Read committe(RC)：在一个事务中，对同一个项，前面的读取跟后面的读取结果可能不一样，例如<br>                               第一次读取时另一个事务的修改还没有提交，第二次读取时已经提交了；<br>            Repeatable read(RR)：可重复读取，在一个事务中，对同一个项，前面的读取跟后面的读取结果一样；<br>            Serializable (S)：可序列化，即数据库的事务是可串行化执行的，就像一个事务执行的时候没有别<br>                              的事务同时在执行，这是最高的隔离级别；</p>
+<pre><code>隔离级别的降低可能导致读到脏数据或者事务执行异常，例如：
     Lost update (LU)：两个事务同时修改一个数据项，但后一个事务中途失败退出，则对数据项的两个
                       修改可能都丢失；
     Dirty Reads (DR)：一个事务读取某数据项，但另一个事务更新了此数据项却没有提交，这样所有的
                       操作可能都得回滚；
     Non-repeatable Reads (NRR)：一个事务对同一数据项的多次读取可能得到不同的结果；
     Second lost updates proble(SLU)：无法重复读取的特例：两个并发事务同时读取和修改同一数据项，则后面的修改可能
-                 使得前面的修改失效；
+                                     使得前面的修改失效；
     Phantom Reads (PR)：也称为幻读，例如在事务执行过程中，由于前面的查询和后面的查询的期间有
                         另外一个事务插入数据，后面的查询结果出现了前面查询结果中未出现的数据。
-
-隔离级别与读写异常(不一致)的关系如下：
-</code></pre></li>
-</ul>
+</code></pre><p>隔离级别与读写异常(不一致)的关系如下：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|    | LU | DR | NRR | SLU | PR |</span><br><span class="line">| RU | Y  | Y  | Y   | Y   | Y  |</span><br><span class="line">| RC | N  | N  | N   | N   | N  |</span><br><span class="line">| RR | N  | N  | N   | N   | N  |</span><br><span class="line">| S  | N  | N  | N   | N   | N  |</span><br></pre></td></tr></table></figure>
 <pre><code>容易发现，在最高隔离级别serializable下，数据不会出现读写的不一致。
 
@@ -431,7 +420,7 @@ OceanBase是强一致的。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimnhew2h000378elai0y8s2g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimnhk7ko00038celzq9ggd7z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -486,7 +475,7 @@ OceanBase是强一致的。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimnhew24000078el2k3hcgsv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimnhk7ki00018celike8wj87" class="article-share-link">Share</a>
       
       
     </footer>
@@ -580,7 +569,7 @@ OceanBase是强一致的。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimnhew2b000178eli1orha8u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimnhk7kb00008celuap4xwuc" class="article-share-link">Share</a>
       
       
     </footer>
