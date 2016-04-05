@@ -6,18 +6,21 @@
   <title>java读写文件 | XeBin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="java读写文件
-参考网站：http://blog.csdn.net/sunnyfans/article/details/7706700">
+参考网站：http://blog.csdn.net/sunnyfans/article/details/7706700
+  不带缓冲的操作，每读一个字节就要写入一个字节，由于涉及磁盘的IO操作相比内存的操作要慢很多，所以不带缓冲的流效率很低。带缓冲的流，可以一次读很多字节，但不向磁盘中写入，只是先放到内存里。等凑够了缓冲区大小的时候一次性写入磁盘，这种方式可以减少磁盘操作次数，速">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java读写文件">
 <meta property="og:url" content="http://yoursite.com/2016/04/05/java读写文件/index.html">
 <meta property="og:site_name" content="XeBin">
 <meta property="og:description" content="java读写文件
-参考网站：http://blog.csdn.net/sunnyfans/article/details/7706700">
-<meta property="og:updated_time" content="2016-04-05T14:16:55.124Z">
+参考网站：http://blog.csdn.net/sunnyfans/article/details/7706700
+  不带缓冲的操作，每读一个字节就要写入一个字节，由于涉及磁盘的IO操作相比内存的操作要慢很多，所以不带缓冲的流效率很低。带缓冲的流，可以一次读很多字节，但不向磁盘中写入，只是先放到内存里。等凑够了缓冲区大小的时候一次性写入磁盘，这种方式可以减少磁盘操作次数，速">
+<meta property="og:updated_time" content="2016-04-05T14:56:36.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java读写文件">
 <meta name="twitter:description" content="java读写文件
-参考网站：http://blog.csdn.net/sunnyfans/article/details/7706700">
+参考网站：http://blog.csdn.net/sunnyfans/article/details/7706700
+  不带缓冲的操作，每读一个字节就要写入一个字节，由于涉及磁盘的IO操作相比内存的操作要慢很多，所以不带缓冲的流效率很低。带缓冲的流，可以一次读很多字节，但不向磁盘中写入，只是先放到内存里。等凑够了缓冲区大小的时候一次性写入磁盘，这种方式可以减少磁盘操作次数，速">
   
   
     <link rel="icon" href="/favicon.png">
@@ -169,13 +172,14 @@
       
         <h3 id="java读写文件"><a href="#java读写文件" class="headerlink" title="java读写文件"></a>java读写文件</h3><ul>
 <li><h4 id="参考网站："><a href="#参考网站：" class="headerlink" title="参考网站："></a>参考网站：</h4><pre><code>http://blog.csdn.net/sunnyfans/article/details/7706700
-</code></pre></li>
+</code></pre><p>  不带缓冲的操作，每读一个字节就要写入一个字节，由于涉及磁盘的IO操作相比内存的操作要慢很多，所以不带缓冲的流效率很低。<br>带缓冲的流，可以一次读很多字节，但不向磁盘中写入，只是先放到内存里。等凑够了缓冲区大小的时候一次性写入磁盘，这种方式可以减<br>少磁盘操作次数，速度就会提高很多！这就是两者的区别</p>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/05/java读写文件/" data-id="cimnif2sm0002bqelgfa1yr6y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/05/java读写文件/" data-id="cimnju0t30003epeltver8q6m" class="article-share-link">Share</a>
       
       
     </footer>
