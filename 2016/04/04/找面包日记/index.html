@@ -19,7 +19,7 @@
  1.1.1， mysql最基本的分页查询方式：
     select * from table where xxx in (1,2,3) order by id limit #offset#, 200    
     select * from content">
-<meta property="og:updated_time" content="2016-04-05T13:21:33.300Z">
+<meta property="og:updated_time" content="2016-04-05T13:48:50.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="找面包日记">
 <meta name="twitter:description" content="找面包日记一，mysql数据库
@@ -196,28 +196,50 @@
 </code></pre></li>
 </ul>
 <ul>
-<li><h4 id="1-2-数据库事务"><a href="#1-2-数据库事务" class="headerlink" title="1.2 数据库事务"></a>1.2 数据库事务</h4><pre><code>每个事务使得数据库从一个一致的永久状态原子地转移到一个新的一致的永久状态，可以说，事务的ACID(the transactional properties of Atomicity, Consistency, Isolation and Durability)属性是数据库事务的灵魂：
+<li><h4 id="1-2-数据库事务"><a href="#1-2-数据库事务" class="headerlink" title="1.2 数据库事务"></a>1.2 数据库事务</h4><pre><code>每个事务使得数据库从一个一致的永久状态原子地转移到一个新的一致的永久状态，可以说，事务的ACID
+(the transactional properties of Atomicity, Consistency, Isolation and 
+Durability)属性是数据库事务的灵魂:
 </code></pre></li>
-<li><h5 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a><strong>原子性</strong></h5><pre><code>事务的原子性首先体现在事务对数据的修改，即要么全都执行，要么全都不执行，例如，从银行账户A转一笔款项a到账户B，结果必须是从A的账户上扣除款项a并且在B的账户上增加款项a，不能只是其中一个账户的修改。但是，事务的原子性并不总是能够保证修改一定完成了或者一定没有进行，例如在ATM机器上进行上述转账，转账指令提交后通信中断或者数据库主机异常了，那么转账可能完成了也可能没有进行：如果通信中断发生前数据库主机完整接收到了转账指令且后续执行也正常，那么转账成功完成了；如果转账指令没有到达数据库主机或者虽然到达但后续执行异常(例如写commit log失败或者账户余额不足)，那么转账就没有进行。要确定转账是否成功，需要待通信恢复或者数据库主机恢复后查询账户交易历史或余额。事务的原子性也体现在事务对数据的读取上，例如一个事务对同一数据项的多次读取的结果一定是相同的。
+<li><h5 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a><strong>原子性</strong></h5><pre><code>事务的原子性首先体现在事务对数据的修改，即要么全都执行，要么全都不执行，例如，从银行账户A转一
+笔款项a到账户B，结果必须是从A的账户上扣除款项a并且在B的账户上增加款项a，不能只是其中一个账户的
+修改。但是，事务的原子性并不总是能够保证修改一定完成了或者一定没有进行，例如在ATM机器上进行上
+述转账，转账指令提交后通信中断或者数据库主机异常了，那么转账可能完成了也可能没有进行：如果通信
+中断发生前数据库主机完整接收到了转账指令且后续执行也正常，那么转账成功完成了；如果转账指令没有
+到达数据库主机或者虽然到达但后续执行异常(例如写commitlog失败或者账户余额不足)，那么转账就没
+有进行。要确定转账是否成功，需要待通信恢复或者数据库主机恢复后查询账户交易历史或余额。事务的
+原子性也体现在事务对数据的读取上，例如一个事务对同一数据项的多次读取的结果一定是相同的。
 </code></pre></li>
-<li><h5 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a><strong>一致性</strong></h5><pre><code>事务需要保持数据库数据的正确性、完整性和一致性，有些时候这种一致性由数据库的内部规则保证，例如数据的类型必须正确，数据值必须在规定的范围内，等等；另外一些时候这种一致性由应用保证的，例如一般情况下银行账务余额不能是负数，信用卡消费不能超过该卡的信用额度等。
+<li><h5 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a><strong>一致性</strong></h5><pre><code>事务需要保持数据库数据的正确性、完整性和一致性，有些时候这种一致性由数据库的内部规则保证，例
+如数据的类型必须正确，数据值必须在规定的范围内，等等；另外一些时候这种一致性由应用保证的，例
+如一般情况下银行账务余额不能是负数，信用卡消费不能超过该卡的信用额度等。
 </code></pre></li>
-<li><h5 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a><strong>隔离性</strong></h5><pre><code>许多时候数据库在并发执行多个事务，每个事务可能需要对多个表项进行修改和查询，与此同时，更多的查询请求可能也在执行中。数据库需要保证每一个事务在它的修改全部完成之前，对其他的事务是不可见的，换句话说，不能让其他事务看到该事务的中间状态，例如，从银行账户A转一笔款项a到账户B，不能让其他事务(例如账户查询)看到A账户已经扣除款项a但B账户却还没有增加款项a的状态。
+<li><h5 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a><strong>隔离性</strong></h5><pre><code>许多时候数据库在并发执行多个事务，每个事务可能需要对多个表项进行修改和查询，与此同时，更多的
+查询请求可能也在执行中。数据库需要保证每一个事务在它的修改全部完成之前，对其他的事务是不可见
+的，换句话说，不能让其他事务看到该事务的中间状态，例如，从银行账户A转一笔款项a到账户B，不能
+让其他事务(例如账户查询)看到A账户已经扣除款项a但B账户却还没有增加款项a的状态。
 </code></pre></li>
 <li><h5 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a><strong>持久性</strong></h5><pre><code>事务完成后，它对于数据库的影响是永久性的，即使系统出现各种异常也是如此。
 
-出于性能考虑，许多数据库允许使用者选择牺牲隔离属性来换取并发度，从而获得性能的提升。SQL定义了4种隔离级别：
-    Read uncommitted (RU)：读取未提交的数据，即其他事务已经修改但还未commit的数据，这是最低的隔离级别；
-    Read committed (RC)：在一个事务中，对同一个项，前面的读取跟后面的读取结果可能不一样，例如第一次读取时另一个事务的修改还没有提交，第二次读取时已经提交了；
-    Repeatable read (RR)：可重复读取，在一个事务中，对同一个项，前面的读取跟后面的读取结果一样；
-    Serializable (S)：可序列化，即数据库的事务是可串行化执行的，就像一个事务执行的时候没有别的事务同时在执行，这是最高的隔离级别；
+出于性能考虑，许多数据库允许使用者选择牺牲隔离属性来换取并发度，从而获得性能的提升。SQL定义
+4种隔离级别：
+    Read uncommitted(RU)：读取未提交的数据，即其他事务已经修改但还未commit的数据，这是最低的
+                          隔离级别；
+    Read committe(RC)：在一个事务中，对同一个项，前面的读取跟后面的读取结果可能不一样，例如
+                       第一次读取时另一个事务的修改还没有提交，第二次读取时已经提交了；
+    Repeatable read(RR)：可重复读取，在一个事务中，对同一个项，前面的读取跟后面的读取结果一样；
+    Serializable (S)：可序列化，即数据库的事务是可串行化执行的，就像一个事务执行的时候没有别
+                      的事务同时在执行，这是最高的隔离级别；
 
 隔离级别的降低可能导致读到脏数据或者事务执行异常，例如：
-    Lost update (LU)：两个事务同时修改一个数据项，但后一个事务中途失败退出，则对数据项的两个修改可能都丢失；
-    Dirty Reads (DR)：一个事务读取某数据项，但另一个事务更新了此数据项却没有提交，这样所有的操作可能都得回滚；
+    Lost update (LU)：两个事务同时修改一个数据项，但后一个事务中途失败退出，则对数据项的两个
+                      修改可能都丢失；
+    Dirty Reads (DR)：一个事务读取某数据项，但另一个事务更新了此数据项却没有提交，这样所有的
+                      操作可能都得回滚；
     Non-repeatable Reads (NRR)：一个事务对同一数据项的多次读取可能得到不同的结果；
-    Second lost updates problem (SLU)：无法重复读取的特例：两个并发事务同时读取和修改同一数据项，则后面的修改可能使得前面的修改失效；
-    Phantom Reads (PR)：也称为幻读，例如在事务执行过程中，由于前面的查询和后面的查询的期间有另外一个事务插入数据，后面的查询结果出现了前面查询结果中未出现的数据。
+    Second lost updates proble(SLU)：无法重复读取的特例：两个并发事务同时读取和修改同一数据项，则后面的修改可能
+                 使得前面的修改失效；
+    Phantom Reads (PR)：也称为幻读，例如在事务执行过程中，由于前面的查询和后面的查询的期间有
+                        另外一个事务插入数据，后面的查询结果出现了前面查询结果中未出现的数据。
 
 隔离级别与读写异常(不一致)的关系如下：
 </code></pre></li>
@@ -225,17 +247,16 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|    | LU | DR | NRR | SLU | PR |</span><br><span class="line">| RU | Y  | Y  | Y   | Y   | Y  |</span><br><span class="line">| RC | N  | N  | N   | N   | N  |</span><br><span class="line">| RR | N  | N  | N   | N   | N  |</span><br><span class="line">| S  | N  | N  | N   | N   | N  |</span><br></pre></td></tr></table></figure>
 <pre><code>容易发现，在最高隔离级别serializable下，数据不会出现读写的不一致。
 
-不同的数据库支持的隔离级别不尽相同，例如oracle只支持read committed和serializable两个级别，MySQL支持全部四个级别。
+不同的数据库支持的隔离级别不尽相同，例如oracle只支持read  committed和serializable两个级别，MySQL支持全部四个级别。
 
-OceanBase的事务实现与经典关系数据库有所不同，其读事务基本是分布式并发执行的，写事务目前是集中式串行执行的，即serializable，且任何一个写事务在commit之前对其他读写事务都是不可见的，因此OceanBase是强一致的。
-</code></pre><h4 id="转发：http-blog-sina-com-cn-s-blog-3fc85e260100msz3-html"><a href="#转发：http-blog-sina-com-cn-s-blog-3fc85e260100msz3-html" class="headerlink" title="转发：http://blog.sina.com.cn/s/blog_3fc85e260100msz3.html"></a>转发：<a href="http://blog.sina.com.cn/s/blog_3fc85e260100msz3.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_3fc85e260100msz3.html</a></h4><h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><ul>
-<li>1，<a href="https://blog.jamespan.me/2015/01/22/trick-of-paging-query/" target="_blank" rel="external">https://blog.jamespan.me/2015/01/22/trick-of-paging-query/</a></li>
-</ul>
-
+OceanBase的事务实现与经典关系数据库有所不同，其读事务基本是分布式并发执行的，写事务目前是集
+中式串行执行的，即serializable，且任何一个写事务在commit之前对其他读写事务都是不可见的，因此
+OceanBase是强一致的。
+</code></pre><h4 id="转发：http-blog-sina-com-cn-s-blog-3fc85e260100msz3-html"><a href="#转发：http-blog-sina-com-cn-s-blog-3fc85e260100msz3-html" class="headerlink" title="转发：http://blog.sina.com.cn/s/blog_3fc85e260100msz3.html"></a>转发：<a href="http://blog.sina.com.cn/s/blog_3fc85e260100msz3.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_3fc85e260100msz3.html</a></h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimngfs1m000345el8ijtlzsg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimnhew2h000378elai0y8s2g" class="article-share-link">Share</a>
       
       
     </footer>
