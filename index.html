@@ -78,7 +78,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -90,6 +90,14 @@
       <ul>
         
           <li>
+            <a href="/2016/04/05/统计学习方法读书笔记/">统计学习方法读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/05/正则表达式背诵/">正则表达式背诵</a>
+          </li>
+        
+          <li>
             <a href="/2016/04/04/深入理解java异常处理机制/">深入理解java异常处理机制</a>
           </li>
         
@@ -99,14 +107,6 @@
         
           <li>
             <a href="/2016/04/04/找面包日记/">找面包日记</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/03/hadoop源码读书笔记/">hadoop源码读书笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/03/MR应用案例/">MR应用案例</a>
           </li>
         
       </ul>
@@ -141,6 +141,101 @@
         
         <section id="main">
   
+    <article id="post-统计学习方法读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/05/统计学习方法读书笔记/" class="article-date">
+  <time datetime="2016-04-05T11:54:32.000Z" itemprop="datePublished">2016-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/05/统计学习方法读书笔记/">统计学习方法读书笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: 统计学习方法读书笔记<br>tags:  贝叶斯  公式推导</p>
+<h2 id="grammar-mathjax-true"><a href="#grammar-mathjax-true" class="headerlink" title="grammar_mathjax: true"></a>grammar_mathjax: true</h2><h3 id="第三章-朴素贝叶斯方法"><a href="#第三章-朴素贝叶斯方法" class="headerlink" title="第三章 朴素贝叶斯方法"></a>第三章 朴素贝叶斯方法</h3><ul>
+<li><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><pre><code>朴素贝叶斯法是基于贝叶斯定理和特征条件独立假设的分类方法。
+</code></pre></li>
+<li><h4 id="公式推导："><a href="#公式推导：" class="headerlink" title="公式推导："></a>公式推导：</h4></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$ P(Y=c_&#123;k&#125;|X=x)=\frac&#123;P(X=x|Y=c_&#123;k&#125;)P(Y=c_&#123;k&#125;)&#125;&#123;\sum_k&#123;P(X=x|Y=c_&#123;k&#125;)P(Y=c_&#123;k&#125;)&#125;&#125;$$</span><br><span class="line">$$               =\frac&#123;P(Y=c_&#123;k&#125;)\prod_jP(&#123;X^&#123;(j)&#125;=x^&#123;(j)&#125;|Y=c_k)&#125;&#125;&#123;\sum_k&#123;上式&#125;&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<pre><code>那么贝叶斯分类器可表示为：
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$               y=f(x)=P(Y=c_&#123;k&#125;|X=x)=&#123;argmax&#125;_&#123;c_k&#125; \frac&#123;P(Y=c_&#123;k&#125;)\prod_jP(&#123;X^&#123;(j)&#125;=x^&#123;(j)&#125;|Y=c_k)&#125;&#125;&#123;\sum_k&#123;上式&#125;&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="后验概率最大化及参数估计"><a href="#后验概率最大化及参数估计" class="headerlink" title="后验概率最大化及参数估计"></a>后验概率最大化及参数估计</h4></li>
+<li><h5 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h5></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$ </span><br><span class="line">      P(Y=c_&#123;k&#125;）=  \frac&#123;\sum_&#123;i=1&#125;^NI(y_i=c_k)&#125;&#123;N&#125;  $$$$</span><br><span class="line">      P(X^&#123;(j)&#125;=a_&#123;jl&#125;|Y=c_k)=  \frac&#123;\sum_&#123;i=1&#125;^NI(x_i^j=a_&#123;jl&#125;,y_i=c_k)&#125;&#123;\sum_&#123;i=1&#125;^NI(y_i=c_k)&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h5 id="贝叶斯估计（补充概率值为零的情况）"><a href="#贝叶斯估计（补充概率值为零的情况）" class="headerlink" title="贝叶斯估计（补充概率值为零的情况）"></a>贝叶斯估计（补充概率值为零的情况）</h5></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$ </span><br><span class="line">      P(Y=c_&#123;k&#125;）=  \frac&#123;\sum_&#123;i=1&#125;^NI(y_i=c_k)&#125;&#123;N&#125;  $$$$</span><br><span class="line">      P(X^&#123;(j)&#125;=a_&#123;jl&#125;|Y=c_k)=  \frac&#123;\sum_&#123;i=1&#125;^NI(x_i^j=a_&#123;jl&#125;,y_i=c_k)+\lambda&#125;&#123;\sum_&#123;i=1&#125;^NI(y_i=c_k)+S_j\lambda&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<pre><code>其中l为第l个取值， 共有S_j个取值
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/05/统计学习方法读书笔记/" data-id="cimndcb6m0006qtel47tm9koq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-正则表达式背诵" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/05/正则表达式背诵/" class="article-date">
+  <time datetime="2016-04-05T10:36:56.000Z" itemprop="datePublished">2016-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/05/正则表达式背诵/">正则表达式背诵</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="正则表达式背诵"><a href="#正则表达式背诵" class="headerlink" title="正则表达式背诵"></a><strong>正则表达式背诵</strong></h2><pre><code>参考网址：http://www.php100.com/manual/unze.html
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/05/正则表达式背诵/" data-id="cimndcb6j0004qtele4mctfi7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-深入理解java异常处理机制" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/04/04/深入理解java异常处理机制/" class="article-date">
@@ -171,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/深入理解java异常处理机制/" data-id="cimm4egj60004phelu2rxp3ix" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/深入理解java异常处理机制/" data-id="cimndcb6k0005qtelpyfbq9dn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -222,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/java易错点总结/" data-id="cimm4egj00002phelopn6vcz7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/java易错点总结/" data-id="cimndcb6d0002qtel2483fa6d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -281,7 +376,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimm4egj40003phelk4ytzocm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimndcb6h0003qtel0mo2ee0e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimm4egip0000phelwmt1151q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimndcb690001qtel18ligozy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -430,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimm4egix0001phel452mtzes" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimndcb620000qtel0551a3sk" class="article-share-link">Share</a>
       
       
     </footer>

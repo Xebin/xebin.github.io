@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>统计学习方法读书笔记 | XeBin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: 统计学习方法读书笔记tags:  贝叶斯  公式推导
+grammar_mathjax: true第三章 朴素贝叶斯方法
+简介：朴素贝叶斯法是基于贝叶斯定理和特征条件独立假设的分类方法。
+
+公式推导：
+
+123$$ P(Y=c_&amp;#123;k&amp;#125;|X=x)=\frac&amp;#123;P(X=x|Y=c_&amp;#123;k&amp;#125;)P(Y=c_&amp;#123;k&amp;#125;)&amp;#125">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计学习方法读书笔记">
+<meta property="og:url" content="http://yoursite.com/2016/04/05/统计学习方法读书笔记/index.html">
+<meta property="og:site_name" content="XeBin">
+<meta property="og:description" content="title: 统计学习方法读书笔记tags:  贝叶斯  公式推导
+grammar_mathjax: true第三章 朴素贝叶斯方法
+简介：朴素贝叶斯法是基于贝叶斯定理和特征条件独立假设的分类方法。
+
+公式推导：
+
+123$$ P(Y=c_&amp;#123;k&amp;#125;|X=x)=\frac&amp;#123;P(X=x|Y=c_&amp;#123;k&amp;#125;)P(Y=c_&amp;#123;k&amp;#125;)&amp;#125">
+<meta property="og:updated_time" content="2016-04-05T11:54:50.108Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="统计学习方法读书笔记">
+<meta name="twitter:description" content="title: 统计学习方法读书笔记tags:  贝叶斯  公式推导
+grammar_mathjax: true第三章 朴素贝叶斯方法
+简介：朴素贝叶斯法是基于贝叶斯定理和特征条件独立假设的分类方法。
+
+公式推导：
+
+123$$ P(Y=c_&amp;#123;k&amp;#125;|X=x)=\frac&amp;#123;P(X=x|Y=c_&amp;#123;k&amp;#125;)P(Y=c_&amp;#123;k&amp;#125;)&amp;#125">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'> -->
+  <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css"> -->
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
+  <link href='//fonts.useso.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <a href="/" class="logo">XeBin</a>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/xebin/index.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        </div>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/xebin" title="Fork me on GitHub"></a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <nav id="mobile-nav" class="off">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/xebin/index.html" class="mobile-nav-link">About</a>
+  
+  <div id="search-form-wrap-mobile">
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+  </div>
+</nav>
+      <div class="outer">
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/04/05/统计学习方法读书笔记/">统计学习方法读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/05/正则表达式背诵/">正则表达式背诵</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/04/深入理解java异常处理机制/">深入理解java异常处理机制</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/04/java易错点总结/">java易错点总结</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/04/找面包日记/">找面包日记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="http://vonalex.github.io/">happen</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+        <section id="main"><article id="post-统计学习方法读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/05/统计学习方法读书笔记/" class="article-date">
+  <time datetime="2016-04-05T11:54:32.000Z" itemprop="datePublished">2016-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      统计学习方法读书笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: 统计学习方法读书笔记<br>tags:  贝叶斯  公式推导</p>
+<h2 id="grammar-mathjax-true"><a href="#grammar-mathjax-true" class="headerlink" title="grammar_mathjax: true"></a>grammar_mathjax: true</h2><h3 id="第三章-朴素贝叶斯方法"><a href="#第三章-朴素贝叶斯方法" class="headerlink" title="第三章 朴素贝叶斯方法"></a>第三章 朴素贝叶斯方法</h3><ul>
+<li><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><pre><code>朴素贝叶斯法是基于贝叶斯定理和特征条件独立假设的分类方法。
+</code></pre></li>
+<li><h4 id="公式推导："><a href="#公式推导：" class="headerlink" title="公式推导："></a>公式推导：</h4></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$ P(Y=c_&#123;k&#125;|X=x)=\frac&#123;P(X=x|Y=c_&#123;k&#125;)P(Y=c_&#123;k&#125;)&#125;&#123;\sum_k&#123;P(X=x|Y=c_&#123;k&#125;)P(Y=c_&#123;k&#125;)&#125;&#125;$$</span><br><span class="line">$$               =\frac&#123;P(Y=c_&#123;k&#125;)\prod_jP(&#123;X^&#123;(j)&#125;=x^&#123;(j)&#125;|Y=c_k)&#125;&#125;&#123;\sum_k&#123;上式&#125;&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<pre><code>那么贝叶斯分类器可表示为：
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$               y=f(x)=P(Y=c_&#123;k&#125;|X=x)=&#123;argmax&#125;_&#123;c_k&#125; \frac&#123;P(Y=c_&#123;k&#125;)\prod_jP(&#123;X^&#123;(j)&#125;=x^&#123;(j)&#125;|Y=c_k)&#125;&#125;&#123;\sum_k&#123;上式&#125;&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="后验概率最大化及参数估计"><a href="#后验概率最大化及参数估计" class="headerlink" title="后验概率最大化及参数估计"></a>后验概率最大化及参数估计</h4></li>
+<li><h5 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h5></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$ </span><br><span class="line">      P(Y=c_&#123;k&#125;）=  \frac&#123;\sum_&#123;i=1&#125;^NI(y_i=c_k)&#125;&#123;N&#125;  $$$$</span><br><span class="line">      P(X^&#123;(j)&#125;=a_&#123;jl&#125;|Y=c_k)=  \frac&#123;\sum_&#123;i=1&#125;^NI(x_i^j=a_&#123;jl&#125;,y_i=c_k)&#125;&#123;\sum_&#123;i=1&#125;^NI(y_i=c_k)&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h5 id="贝叶斯估计（补充概率值为零的情况）"><a href="#贝叶斯估计（补充概率值为零的情况）" class="headerlink" title="贝叶斯估计（补充概率值为零的情况）"></a>贝叶斯估计（补充概率值为零的情况）</h5></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$ </span><br><span class="line">      P(Y=c_&#123;k&#125;）=  \frac&#123;\sum_&#123;i=1&#125;^NI(y_i=c_k)&#125;&#123;N&#125;  $$$$</span><br><span class="line">      P(X^&#123;(j)&#125;=a_&#123;jl&#125;|Y=c_k)=  \frac&#123;\sum_&#123;i=1&#125;^NI(x_i^j=a_&#123;jl&#125;,y_i=c_k)+\lambda&#125;&#123;\sum_&#123;i=1&#125;^NI(y_i=c_k)+S_j\lambda&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<pre><code>其中l为第l个取值， 共有S_j个取值
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/05/统计学习方法读书笔记/" data-id="cimndcb6m0006qtel47tm9koq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/05/正则表达式背诵/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">正则表达式背诵</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/04/05/统计学习方法读书笔记/" data-title="统计学习方法读书笔记" data-url="http://yoursite.com/2016/04/05/统计学习方法读书笔记/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"xebin"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+
+<!-- <div id="disqus_thread">  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> </div> -->
+</section>
+
+</section>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <a href="/" class="logo">XeBin</a>
+      &copy; 2016 XeBin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">xebin</a><br>
+     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+     <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+   </div>
+  </div>
+</footer>
+
+    </div>
+    
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollLoading.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
