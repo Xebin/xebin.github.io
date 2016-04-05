@@ -196,7 +196,7 @@ tag:第三章 朴素贝叶斯方法
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/05/统计学习方法读书笔记/" data-id="cimnenkwh0006iael9zecz7uw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/05/统计学习方法读书笔记/" data-id="cimneu7t70006k3elm52wua3g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -264,7 +264,23 @@ var duoshuoQuery = {short_name:"xebin"};
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
-
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 <script src="/js/script.js"></script>
 
