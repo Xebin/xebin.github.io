@@ -80,7 +80,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
@@ -90,6 +90,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/04/10/Jstorm学习总结/">Jstorm学习总结</a>
+          </li>
         
           <li>
             <a href="/2016/04/07/python-设计模式/">python 设计模式</a>
@@ -105,10 +109,6 @@
         
           <li>
             <a href="/2016/04/05/java读写文件/">java读写文件</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/05/统计学习方法读书笔记/">统计学习方法读书笔记</a>
           </li>
         
       </ul>
@@ -142,6 +142,61 @@
 </aside>
         
         <section id="main">
+  
+    <article id="post-hadoop源码读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/03/hadoop源码读书笔记/" class="article-date">
+  <time datetime="2016-04-03T15:14:51.000Z" itemprop="datePublished">2016-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/03/hadoop源码读书笔记/">hadoop源码读书笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#hadoop源码读书笔记</p>
+<p>##一，map的输入</p>
+<ul>
+<li><p>###1.1，KeyValueTextInputFormat类</p>
+<pre><code>  KeyValueTextInputFormat格式类读取一个文本文件，然后，把它分割成为若干个记录，一行作为一个记录。通过每一行
+中的tab字符把每一行进一步分割成为键值对。如果某一行中没有tab字符，那么整个行会被认为是关键字，值对象则为空。如
+果tab字符是一行中的最后一个位置，框架将会忽略这个tab字符。
+    假设一个输入文件有如下三行数据，TAB表示US-ASCII水平字符(0x09)：
+        key1TABvalue1
+        key2
+        key3TABvalue3TABvalue4
+
+    框架会传入如下键值对到你的mapper：
+        Key1, value1
+        Key2
+        Key3, value3TABvalue4
+</code></pre></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimuofbv70002xgel3fqokjlv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-MR应用案例" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -226,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimriif400001trelubl975ph" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/MR应用案例/" data-id="cimuofbvc0004xgeljety7m1n" class="article-share-link">Share</a>
       
       
     </footer>

@@ -3,24 +3,42 @@
 <head>
   <meta charset="utf-8">
   
-  <title>java读写文件 | XeBin</title>
+  <title>Jstorm学习总结 | XeBin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java读写文件
-参考网站：http://blog.csdn.net/sunnyfans/article/details/7706700
-  不带缓冲的操作，每读一个字节就要写入一个字节，由于涉及磁盘的IO操作相比内存的操作要慢很多，所以不带缓冲的流效率很低。带缓冲的流，可以一次读很多字节，但不向磁盘中写入，只是先放到内存里。等凑够了缓冲区大小的时候一次性写入磁盘，这种方式可以减少磁盘操作次数，速">
+  <meta name="description" content="title: Jstorm学习tags: storm,Jstorm,原理
+grammar_cjkRuby: true一，storm如何保证数据不丢失？
+storm是通过ack机制来保证数据不丢失，下面以一个简单的例子讲一下ack机制，见下图：
+具体过程讲解：
+
+
+
+二，事务storm的事务主要用于，对数据准确性非常高的环境中。它保证了在处理消息的过程中，消息不会丢失，而且再结合具有去重功的存储，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java读写文件">
-<meta property="og:url" content="http://yoursite.com/2016/04/05/java读写文件/index.html">
+<meta property="og:title" content="Jstorm学习总结">
+<meta property="og:url" content="http://yoursite.com/2016/04/10/Jstorm学习总结/index.html">
 <meta property="og:site_name" content="XeBin">
-<meta property="og:description" content="java读写文件
-参考网站：http://blog.csdn.net/sunnyfans/article/details/7706700
-  不带缓冲的操作，每读一个字节就要写入一个字节，由于涉及磁盘的IO操作相比内存的操作要慢很多，所以不带缓冲的流效率很低。带缓冲的流，可以一次读很多字节，但不向磁盘中写入，只是先放到内存里。等凑够了缓冲区大小的时候一次性写入磁盘，这种方式可以减少磁盘操作次数，速">
-<meta property="og:updated_time" content="2016-04-05T14:56:36.344Z">
+<meta property="og:description" content="title: Jstorm学习tags: storm,Jstorm,原理
+grammar_cjkRuby: true一，storm如何保证数据不丢失？
+storm是通过ack机制来保证数据不丢失，下面以一个简单的例子讲一下ack机制，见下图：
+具体过程讲解：
+
+
+
+二，事务storm的事务主要用于，对数据准确性非常高的环境中。它保证了在处理消息的过程中，消息不会丢失，而且再结合具有去重功的存储，">
+<meta property="og:image" content="http://7xskxa.com2.z0.glb.clouddn.com/ack%E6%A1%86%E6%9E%B6%E4%BE%8B%E5%AD%90.jpg">
+<meta property="og:image" content="http://7xskxa.com2.z0.glb.clouddn.com/ack%E6%AD%A5%E9%AA%A4.jpg">
+<meta property="og:updated_time" content="2016-04-10T14:39:28.369Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java读写文件">
-<meta name="twitter:description" content="java读写文件
-参考网站：http://blog.csdn.net/sunnyfans/article/details/7706700
-  不带缓冲的操作，每读一个字节就要写入一个字节，由于涉及磁盘的IO操作相比内存的操作要慢很多，所以不带缓冲的流效率很低。带缓冲的流，可以一次读很多字节，但不向磁盘中写入，只是先放到内存里。等凑够了缓冲区大小的时候一次性写入磁盘，这种方式可以减少磁盘操作次数，速">
+<meta name="twitter:title" content="Jstorm学习总结">
+<meta name="twitter:description" content="title: Jstorm学习tags: storm,Jstorm,原理
+grammar_cjkRuby: true一，storm如何保证数据不丢失？
+storm是通过ack机制来保证数据不丢失，下面以一个简单的例子讲一下ack机制，见下图：
+具体过程讲解：
+
+
+
+二，事务storm的事务主要用于，对数据准确性非常高的环境中。它保证了在处理消息的过程中，消息不会丢失，而且再结合具有去重功的存储，">
+<meta name="twitter:image" content="http://7xskxa.com2.z0.glb.clouddn.com/ack%E6%A1%86%E6%9E%B6%E4%BE%8B%E5%AD%90.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -148,10 +166,10 @@
   
 </aside>
         
-        <section id="main"><article id="post-java读写文件" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Jstorm学习总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/04/05/java读写文件/" class="article-date">
-  <time datetime="2016-04-05T14:15:17.000Z" itemprop="datePublished">2016-04-05</time>
+    <a href="/2016/04/10/Jstorm学习总结/" class="article-date">
+  <time datetime="2016-04-10T14:38:58.000Z" itemprop="datePublished">2016-04-10</time>
 </a>
     
   </div>
@@ -162,7 +180,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      java读写文件
+      Jstorm学习总结
     </h1>
   
 
@@ -170,16 +188,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="java读写文件"><a href="#java读写文件" class="headerlink" title="java读写文件"></a>java读写文件</h3><ul>
-<li><h4 id="参考网站："><a href="#参考网站：" class="headerlink" title="参考网站："></a>参考网站：</h4><pre><code>http://blog.csdn.net/sunnyfans/article/details/7706700
-</code></pre><p>  不带缓冲的操作，每读一个字节就要写入一个字节，由于涉及磁盘的IO操作相比内存的操作要慢很多，所以不带缓冲的流效率很低。<br>带缓冲的流，可以一次读很多字节，但不向磁盘中写入，只是先放到内存里。等凑够了缓冲区大小的时候一次性写入磁盘，这种方式可以减<br>少磁盘操作次数，速度就会提高很多！这就是两者的区别</p>
+        <hr>
+<p>title: Jstorm学习<br>tags: storm,Jstorm,原理</p>
+<h2 id="grammar-cjkRuby-true"><a href="#grammar-cjkRuby-true" class="headerlink" title="grammar_cjkRuby: true"></a>grammar_cjkRuby: true</h2><h3 id="一，storm如何保证数据不丢失？"><a href="#一，storm如何保证数据不丢失？" class="headerlink" title="一，storm如何保证数据不丢失？"></a>一，storm如何保证数据不丢失？</h3><ul>
+<li><h4 id="storm是通过ack机制来保证数据不丢失，下面以一个简单的例子讲一下ack机制，见下图："><a href="#storm是通过ack机制来保证数据不丢失，下面以一个简单的例子讲一下ack机制，见下图：" class="headerlink" title="storm是通过ack机制来保证数据不丢失，下面以一个简单的例子讲一下ack机制，见下图："></a>storm是通过ack机制来保证数据不丢失，下面以一个简单的例子讲一下ack机制，见下图：</h4><p><img src="http://7xskxa.com2.z0.glb.clouddn.com/ack%E6%A1%86%E6%9E%B6%E4%BE%8B%E5%AD%90.jpg" alt="ack框架例子"></p>
+<pre><code>具体过程讲解：
+</code></pre><p><img src="http://7xskxa.com2.z0.glb.clouddn.com/ack%E6%AD%A5%E9%AA%A4.jpg" alt="ack步骤"></p>
 </li>
 </ul>
+<h3 id="二，事务"><a href="#二，事务" class="headerlink" title="二，事务"></a>二，事务</h3><pre><code>storm的事务主要用于，对数据准确性非常高的环境中。它保证了在处理消息的过程中，消息不会丢失，而且再结合具有去重功的存储，就可以实现消息被整个系统处理一次而且只处理一次。
+事务的设计模式主要有：
+1，strong order：强顺序流； 
+2，强顺序batch流：一次处理一批turple，而且当一个batch处理完，才会处理下一个batch
+3，Trasactional Topology： Storm提供的Transactional Topology将batch计算分为process和commit两个阶段。Process阶段可以同时处理多个batch，不用保证顺序性；commit阶段保证batch的强顺序性，并且一次只能处理一个batch，第1个batch成功提交之前，第2个batch不能被提交。
+</code></pre><h3 id="三，数据流分流与合并"><a href="#三，数据流分流与合并" class="headerlink" title="三，数据流分流与合并"></a>三，数据流分流与合并</h3><p>参考： <a href="https://github.com/alibaba/jstorm/wiki/%E6%95%B0%E6%8D%AE%E6%B5%81%E5%88%86%E6%B5%81%E5%92%8C%E5%90%88%E5%B9%B6" target="_blank" rel="external">https://github.com/alibaba/jstorm/wiki/%E6%95%B0%E6%8D%AE%E6%B5%81%E5%88%86%E6%B5%81%E5%92%8C%E5%90%88%E5%B9%B6</a></p>
+<h3 id="四，"><a href="#四，" class="headerlink" title="四，"></a>四，</h3><h5 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h5><p>1，<a href="https://github.com/alibaba/jstorm/wiki/JStorm-Chinese-Documentation" target="_blank" rel="external">Jstorm document</a><br>2，storm源码解析 李明<br>3，<a href="http://blog.linezing.com/?p=1976" target="_blank" rel="external">http://blog.linezing.com/?p=1976</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/05/java读写文件/" data-id="cimuofbvw000axgel0gh66i54" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/10/Jstorm学习总结/" data-id="cimuofbuq0000xgelx241s1cm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -188,19 +216,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/04/06/ML数学基础/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ML数学基础
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/04/05/统计学习方法读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/04/07/python-设计模式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">统计学习方法读书笔记</div>
+      <div class="article-nav-title">python 设计模式</div>
     </a>
   
 </nav>
@@ -211,7 +230,7 @@
 
 <section id="comments">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016/04/05/java读写文件/" data-title="java读写文件" data-url="http://yoursite.com/2016/04/05/java读写文件/"></div>
+	<div class="ds-thread" data-thread-key="2016/04/10/Jstorm学习总结/" data-title="Jstorm学习总结" data-url="http://yoursite.com/2016/04/10/Jstorm学习总结/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
