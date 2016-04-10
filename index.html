@@ -185,18 +185,21 @@
 </code></pre><p><img src="http://7xskxa.com2.z0.glb.clouddn.com/ack%E6%AD%A5%E9%AA%A4.jpg" alt="ack步骤"></p>
 </li>
 </ul>
-<h3 id="二，事务"><a href="#二，事务" class="headerlink" title="二，事务"></a>二，事务</h3><pre><code>storm的事务主要用于，对数据准确性非常高的环境中。它保证了在处理消息的过程中，消息不会丢失，而且再结合具有去重功的存储，就可以实现消息被整个系统处理一次而且只处理一次。
-事务的设计模式主要有：
-1，strong order：强顺序流； 
-2，强顺序batch流：一次处理一批turple，而且当一个batch处理完，才会处理下一个batch
-3，Trasactional Topology： Storm提供的Transactional Topology将batch计算分为process和commit两个阶段。Process阶段可以同时处理多个batch，不用保证顺序性；commit阶段保证batch的强顺序性，并且一次只能处理一个batch，第1个batch成功提交之前，第2个batch不能被提交。
+<h3 id="二，事务"><a href="#二，事务" class="headerlink" title="二，事务"></a>二，事务</h3><pre><code>    storm的事务主要用于，对数据准确性非常高的环境中。它保证了在处理消息的过程中，消息不会丢失，而且再结合具有去重功的存储，
+就可以实现消息被整个系统处理一次而且只处理一次。
+    事务的设计模式主要有：
+    1，strong order：强顺序流； 
+    2，强顺序batch流：一次处理一批turple，而且当一个batch处理完，才会处理下一个batch
+    3，Trasactional Topology： Storm提供的Transactional Topology将batch计算分为process和commit两个阶段。Process阶段可以同
+时处理多个batch，不用保证顺序性；commit阶段保证batch的强顺序性，并且一次只能处理一个batch，第1个batch成功提交之前，第
+2个batch不能被提交。
 </code></pre><h3 id="三，数据流分流与合并"><a href="#三，数据流分流与合并" class="headerlink" title="三，数据流分流与合并"></a>三，数据流分流与合并</h3><p>参考： <a href="https://github.com/alibaba/jstorm/wiki/%E6%95%B0%E6%8D%AE%E6%B5%81%E5%88%86%E6%B5%81%E5%92%8C%E5%90%88%E5%B9%B6" target="_blank" rel="external">https://github.com/alibaba/jstorm/wiki/%E6%95%B0%E6%8D%AE%E6%B5%81%E5%88%86%E6%B5%81%E5%92%8C%E5%90%88%E5%B9%B6</a></p>
 <h3 id="四，"><a href="#四，" class="headerlink" title="四，"></a>四，</h3><h5 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h5><p>1，<a href="https://github.com/alibaba/jstorm/wiki/JStorm-Chinese-Documentation" target="_blank" rel="external">Jstorm document</a><br>2，storm源码解析 李明<br>3，<a href="http://blog.linezing.com/?p=1976" target="_blank" rel="external">http://blog.linezing.com/?p=1976</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/10/Jstorm学习总结/" data-id="cimuooa7n00005ieltl2qb5k1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/10/Jstorm学习总结/" data-id="cimuoqfhj00006oellprvzt4c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jstorm-ack-事务-流/">Jstorm ack 事务 流</a></li></ul>
@@ -252,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/07/python-设计模式/" data-id="cimuooa8e00085ielqqqikeki" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/07/python-设计模式/" data-id="cimuoqfib00086oelmh6oaizi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -877,7 +880,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/07/怎样才能敢说你熟悉python？/" data-id="cimuooa8h00095ieldxhktkyz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/07/怎样才能敢说你熟悉python？/" data-id="cimuoqfig00096oelhsffplib" class="article-share-link">Share</a>
       
       
     </footer>
@@ -917,7 +920,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/06/ML数学基础/" data-id="cimuooa7u00015ielgepp2o9n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/06/ML数学基础/" data-id="cimuoqfhq00016oelfbkaj6vt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -959,7 +962,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/05/java读写文件/" data-id="cimuooa8a00075iel1ef0cl4o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/05/java读写文件/" data-id="cimuoqfi700076oely8c5cqc5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1015,7 +1018,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/05/统计学习方法读书笔记/" data-id="cimuooa8w000d5ielr1j9rjpd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/05/统计学习方法读书笔记/" data-id="cimuoqfj0000d6oel34dmddi8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1053,7 +1056,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/05/正则表达式背诵/" data-id="cimuooa8s000b5ielgigb8l7m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/05/正则表达式背诵/" data-id="cimuoqfit000b6oel938gi92c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1094,7 +1097,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/深入理解java异常处理机制/" data-id="cimuooa8u000c5ielu7xnamvu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/深入理解java异常处理机制/" data-id="cimuoqfiv000c6oel2m2jl9z3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1145,7 +1148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/java易错点总结/" data-id="cimuooa8700055ielba4w280b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/java易错点总结/" data-id="cimuoqfi400056oelzs0j12gz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1247,7 +1250,7 @@ OceanBase是强一致的。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimuooa8p000a5ielxcvsx22k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimuoqfio000a6oelzmqflc99" class="article-share-link">Share</a>
       
       
     </footer>
