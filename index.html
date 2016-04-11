@@ -80,7 +80,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -90,6 +90,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/04/11/Maven学习整理/">Maven学习整理</a>
+          </li>
         
           <li>
             <a href="/2016/04/10/MR应用案例/">MR应用案例</a>
@@ -105,10 +109,6 @@
         
           <li>
             <a href="/2016/04/07/怎样才能敢说你熟悉python？/">怎样才能敢说你熟悉python？</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/06/ML数学基础/">ML数学基础</a>
           </li>
         
       </ul>
@@ -156,6 +156,88 @@
 </aside>
         
         <section id="main">
+  
+    <article id="post-Maven学习整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/11/Maven学习整理/" class="article-date">
+  <time datetime="2016-04-11T07:31:41.000Z" itemprop="datePublished">2016-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/11/Maven学习整理/">Maven学习整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="maven学习"><a href="#maven学习" class="headerlink" title="maven学习"></a>maven学习</h2><h4 id="1，maven简述"><a href="#1，maven简述" class="headerlink" title="1，maven简述"></a>1，maven简述</h4><pre><code>Maven是基于项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。    
+</code></pre><h4 id="2，maven目录结构"><a href="#2，maven目录结构" class="headerlink" title="2，maven目录结构"></a>2，maven目录结构</h4><p>maven_pro<br>|– pom.xml<br>|– src<br>|– |– main<br>|– |– |– java<br>|– |– |– |– com<br>|– |– |– |– |– test<br>|– |– |– |– |– |– App.java<br>|– |– |– resources<br>|– |– |– |– META-INF<br>|– |– |– |– application.properties<br>|– |– test<br>|– |– |– java<br>|– |– |– |– com<br>|– |– |– |–  |– test<br>|– |– |– |–  |– |– AppTest.java<br>|– |– |– resources  </p>
+<h4 id="3，maven的依赖特性"><a href="#3，maven的依赖特性" class="headerlink" title="3，maven的依赖特性"></a>3，maven的依赖特性</h4><ul>
+<li><h5 id="3-1-依赖的配置"><a href="#3-1-依赖的配置" class="headerlink" title="3.1 依赖的配置"></a>3.1 依赖的配置</h5><p>  每个依赖可以包含的元素：</p>
+<p>groupId,artifactId和version：依赖的基本坐标，对于任何一个依赖来说，基本坐标是最重要的，Maven根据坐标才能找到需要的依赖</p>
+<p>type: 依赖的类型，对应于项目坐标定义的packaging。大部分情况下，该元素不必声明，其默认值是jar</p>
+<p>scope: 依赖的范围，下面会进行详解</p>
+<p>optional: 标记依赖是否可选</p>
+<p>exclusions: 用来排除传递性依赖，下面会进行详解</p>
+</li>
+<li><h5 id="3-2-依赖的范围"><a href="#3-2-依赖的范围" class="headerlink" title="3.2 依赖的范围"></a>3.2 依赖的范围</h5><p>  test：在测试时有效，在编译和运行时无效</p>
+<p>  provided：在编译和测试时有效，最后生成jar或war包时不会生效</p>
+<p>  runtime：在运行时的依赖，在编译时不会使用</p>
+<p>  compile：在编译时有效，在编译和打包时会将jar包存储进去</p>
+<p>  默认是compile。</p>
+</li>
+<li><h5 id="3-3-传递性依赖"><a href="#3-3-传递性依赖" class="headerlink" title="3.3 传递性依赖"></a>3.3 传递性依赖</h5><p>  同级的依赖，先定义的优先；不同级的依赖，高级的优先</p>
+</li>
+<li><h5 id="3-4-可选依赖"><a href="#3-4-可选依赖" class="headerlink" title="3.4 可选依赖"></a>3.4 可选依赖</h5><p>  有时候我们不想让依赖传递，那么可配置该依赖为可选依赖，将元素optional设置为true即可</p>
+</li>
+<li><h5 id="3-5-排除依赖"><a href="#3-5-排除依赖" class="headerlink" title="3.5 排除依赖"></a>3.5 排除依赖</h5><p>  当我们引入第三方jar包的时候，难免会引入传递性依赖，有些时候这是好事，然而有些时候我们不需要其中的一些传递性依赖</p>
+</li>
+<li><h5 id="3-6-依赖归类"><a href="#3-6-依赖归类" class="headerlink" title="3.6 依赖归类"></a>3.6 依赖归类</h5><p>  有些依赖来自同一项目的不同模块，为了以后升级方便，在一个唯一的地方定义版本。如spring的版本控制如下：</p>
+<pre><code>&lt;properties&gt;  
+    &lt;springframework.version&gt;2.5.6&lt;/springframework.version&gt;  
+&lt;/properties&gt;  
+···
+&lt;dependency&gt;  
+     &lt;groupId&gt;org.springframework&lt;/groupId&gt;  
+     &lt;artifactId&gt;spring-core&lt;/artifactId&gt;  
+     &lt;version&gt;${springframework.version}&lt;/version&gt;  
+&lt;/dependency&gt;  
+</code></pre></li>
+</ul>
+<h4 id="4，maven的聚合与继承"><a href="#4，maven的聚合与继承" class="headerlink" title="4，maven的聚合与继承"></a>4，maven的聚合与继承</h4><pre><code>聚合：是为了一条指令就可构建多个模块
+继承： 为了防止重复，
+</code></pre><p>参考：<a href="http://www.tuicool.com/articles/BryMNjY" target="_blank" rel="external">聚合与继承</a></p>
+<h4 id="5，Eclipse中maven的常用指令"><a href="#5，Eclipse中maven的常用指令" class="headerlink" title="5，Eclipse中maven的常用指令"></a>5，Eclipse中maven的常用指令</h4><ul>
+<li><h5 id="点击Run-As就可以发现几个Maven的命令："><a href="#点击Run-As就可以发现几个Maven的命令：" class="headerlink" title=" 点击Run As就可以发现几个Maven的命令： "></a><strong> 点击Run As就可以发现几个Maven的命令： </strong></h5><p>  　　<strong>Maven Build:</strong>   这个命令用于编译Maven工程，执行命令后会在target文件夹中的classes中生成对应的class文件。</p>
+<p>  　　<strong>Maven Clean:</strong>   删除target文件夹，即删除生成的package包以及class等文件。</p>
+<p>  　　<strong>Maven Test:</strong>    先自动进行编译，在运行所有的测试用例。</p>
+<p>  　　<strong>Maven install:</strong> 发布生成对应的package包。</p>
+</li>
+</ul>
+<h5 id="参考网址："><a href="#参考网址：" class="headerlink" title="参考网址："></a>参考网址：</h5><p>1，<a href="http://blog.csdn.net/zheng0518/article/details/38777479" target="_blank" rel="external">maven的依赖特性</a><br>2，<a href="http://www.icoolxue.com/play/713" target="_blank" rel="external">孔浩maven教程</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/11/Maven学习整理/" data-id="cimvolebf0004zqel4bqeklnz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-MR应用案例" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -240,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/10/MR应用案例/" data-id="cimupdogb0004dheliemgc8pj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/10/MR应用案例/" data-id="cimvolebd0003zqel3xyy4gb5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -293,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/10/Jstorm学习总结/" data-id="cimupdofv0000dhelzd18edhk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/10/Jstorm学习总结/" data-id="cimvoleay0000zqelghaiyz2v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jstorm-ack-事务-流/">Jstorm ack 事务 流</a></li></ul>
@@ -349,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/07/python-设计模式/" data-id="cimupdogm0008dhelujusas4y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/07/python-设计模式/" data-id="cimvolebt0009zqelsdrdqaxp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -974,7 +1056,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/07/怎样才能敢说你熟悉python？/" data-id="cimupdogu000adhelkgaf5bqh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/07/怎样才能敢说你熟悉python？/" data-id="cimvoleby000azqelvbbtgmif" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1014,7 +1096,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/06/ML数学基础/" data-id="cimupdog10001dheli6aolhcx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/06/ML数学基础/" data-id="cimvoleb50001zqelhftrdgjy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1056,7 +1138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/05/java读写文件/" data-id="cimupdogh0007dhelsvt1mvaf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/05/java读写文件/" data-id="cimvolebo0008zqelexdo537n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1112,7 +1194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/05/统计学习方法读书笔记/" data-id="cimupdoh1000ddhelxerq2hjt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/05/统计学习方法读书笔记/" data-id="cimvolec6000dzqelbjdmsmu3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1146,11 +1228,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="正则表达式背诵"><a href="#正则表达式背诵" class="headerlink" title="正则表达式背诵"></a><strong>正则表达式背诵</strong></h2><pre><code>参考网址：http://www.php100.com/manual/unze.html
+</code></pre><h4 id="参考网址："><a href="#参考网址：" class="headerlink" title="参考网址："></a>参考网址：</h4><pre><code>1,[正则表达式的种类](http://www.cnblogs.com/finallyliuyu/archive/2013/05/27/3101220.html)
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/05/正则表达式背诵/" data-id="cimupdogw000bdhelelnuwc2z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/05/正则表达式背诵/" data-id="cimvolec3000czqelt7ydxz21" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1191,58 +1274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/深入理解java异常处理机制/" data-id="cimupdogz000cdhelt9lyvir6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-java易错点总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/04/04/java易错点总结/" class="article-date">
-  <time datetime="2016-04-04T06:52:42.000Z" itemprop="datePublished">2016-04-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/04/java易错点总结/">java易错点总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="java易错点总结"><a href="#java易错点总结" class="headerlink" title="java易错点总结"></a>java易错点总结</h2><h3 id="一，java中的this-、super对比分析"><a href="#一，java中的this-、super对比分析" class="headerlink" title="一，java中的this 、super对比分析"></a>一，java中的this 、super对比分析</h3><ul>
-<li><h4 id="this：总是指向调用该方法的对像，会隐式传入子类对象的引用，但是若父类方法中this指向私有方法时，私有方法将不会被覆盖（号称静态绑定-），仍然调用父类的私有方法。"><a href="#this：总是指向调用该方法的对像，会隐式传入子类对象的引用，但是若父类方法中this指向私有方法时，私有方法将不会被覆盖（号称静态绑定-），仍然调用父类的私有方法。" class="headerlink" title="this：总是指向调用该方法的对像，会隐式传入子类对象的引用，但是若父类方法中this指向私有方法时，私有方法将不会被覆盖（号称静态绑定 ），仍然调用父类的私有方法。"></a>this：总是指向调用该方法的对像，会隐式传入子类对象的引用，但是若父类方法中this指向私有方法时，私有方法将不会被覆盖（号称静态绑定 ），仍然调用父类的私有方法。</h4></li>
-<li><h4 id="super：总是用于调用处方法所处的类的直接父类。"><a href="#super：总是用于调用处方法所处的类的直接父类。" class="headerlink" title="super：总是用于调用处方法所处的类的直接父类。"></a>super：总是用于调用处方法所处的类的直接父类。</h4></li>
-<li><h4 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h4></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">grandfather</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"grandfather"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">father</span> <span class="keyword">extends</span> <span class="title">grandfather</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"father"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.print();</span><br><span class="line">        <span class="keyword">super</span>.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">sun</span> <span class="keyword">extends</span> <span class="title">father</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"sun"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.print();</span><br><span class="line">        <span class="keyword">super</span>.fun();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        sun s=<span class="keyword">new</span> sun();</span><br><span class="line">        s.fun();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">        sun</span><br><span class="line">        sun</span><br><span class="line">        grandfather</span><br><span class="line">        </span><br><span class="line">若father类的print为<span class="keyword">private</span> 同时不继承granfather（否则会报继承错误），则输出为：</span><br><span class="line">        sun</span><br><span class="line">        father</span><br></pre></td></tr></table></figure>
-<h3 id="二，this和super的用法区别与总结"><a href="#二，this和super的用法区别与总结" class="headerlink" title="二，this和super的用法区别与总结"></a>二，this和super的用法区别与总结</h3><pre><code>1）super（参数）：调用父类的构造方法 。  
-2）this（参数）：调用本类的其他构造方法。  
-3）都必须放在构造方法的第一行。  
-3）super：引用父类中的成员，当子类和父类中的方法重名时，这样用。  
-4）this：代表当前对象名（在程序中易产生二义性之处，应使用this来指明当前对象；如果函数的形参与类中的成员数据同名，
-         这时需用this来指明成员变量名）。  
-5）this()和super()都指的是对象，所以，均不能在static环境中使用。包括：static变量,static方法，static语句块。  
-6）从本质上讲，this是一个指向本对象的指针, 然而super是一个Java关键字。  
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/java易错点总结/" data-id="cimupdogd0005dhel3lkpniry" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/深入理解java异常处理机制/" data-id="cimvolecb000ezqel23eaylbt" class="article-share-link">Share</a>
       
       
     </footer>

@@ -80,7 +80,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">12</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -90,6 +90,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/04/11/Maven学习整理/">Maven学习整理</a>
+          </li>
         
           <li>
             <a href="/2016/04/10/MR应用案例/">MR应用案例</a>
@@ -105,10 +109,6 @@
         
           <li>
             <a href="/2016/04/07/怎样才能敢说你熟悉python？/">怎样才能敢说你熟悉python？</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/06/ML数学基础/">ML数学基础</a>
           </li>
         
       </ul>
@@ -156,6 +156,57 @@
 </aside>
         
         <section id="main">
+  
+    <article id="post-java易错点总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/04/java易错点总结/" class="article-date">
+  <time datetime="2016-04-04T06:52:42.000Z" itemprop="datePublished">2016-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/04/java易错点总结/">java易错点总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="java易错点总结"><a href="#java易错点总结" class="headerlink" title="java易错点总结"></a>java易错点总结</h2><h3 id="一，java中的this-、super对比分析"><a href="#一，java中的this-、super对比分析" class="headerlink" title="一，java中的this 、super对比分析"></a>一，java中的this 、super对比分析</h3><ul>
+<li><h4 id="this：总是指向调用该方法的对像，会隐式传入子类对象的引用，但是若父类方法中this指向私有方法时，私有方法将不会被覆盖（号称静态绑定-），仍然调用父类的私有方法。"><a href="#this：总是指向调用该方法的对像，会隐式传入子类对象的引用，但是若父类方法中this指向私有方法时，私有方法将不会被覆盖（号称静态绑定-），仍然调用父类的私有方法。" class="headerlink" title="this：总是指向调用该方法的对像，会隐式传入子类对象的引用，但是若父类方法中this指向私有方法时，私有方法将不会被覆盖（号称静态绑定 ），仍然调用父类的私有方法。"></a>this：总是指向调用该方法的对像，会隐式传入子类对象的引用，但是若父类方法中this指向私有方法时，私有方法将不会被覆盖（号称静态绑定 ），仍然调用父类的私有方法。</h4></li>
+<li><h4 id="super：总是用于调用处方法所处的类的直接父类。"><a href="#super：总是用于调用处方法所处的类的直接父类。" class="headerlink" title="super：总是用于调用处方法所处的类的直接父类。"></a>super：总是用于调用处方法所处的类的直接父类。</h4></li>
+<li><h4 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h4></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">grandfather</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"grandfather"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">father</span> <span class="keyword">extends</span> <span class="title">grandfather</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"father"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.print();</span><br><span class="line">        <span class="keyword">super</span>.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">sun</span> <span class="keyword">extends</span> <span class="title">father</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"sun"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.print();</span><br><span class="line">        <span class="keyword">super</span>.fun();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        sun s=<span class="keyword">new</span> sun();</span><br><span class="line">        s.fun();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">        sun</span><br><span class="line">        sun</span><br><span class="line">        grandfather</span><br><span class="line">        </span><br><span class="line">若father类的print为<span class="keyword">private</span> 同时不继承granfather（否则会报继承错误），则输出为：</span><br><span class="line">        sun</span><br><span class="line">        father</span><br></pre></td></tr></table></figure>
+<h3 id="二，this和super的用法区别与总结"><a href="#二，this和super的用法区别与总结" class="headerlink" title="二，this和super的用法区别与总结"></a>二，this和super的用法区别与总结</h3><pre><code>1）super（参数）：调用父类的构造方法 。  
+2）this（参数）：调用本类的其他构造方法。  
+3）都必须放在构造方法的第一行。  
+3）super：引用父类中的成员，当子类和父类中的方法重名时，这样用。  
+4）this：代表当前对象名（在程序中易产生二义性之处，应使用this来指明当前对象；如果函数的形参与类中的成员数据同名，
+         这时需用this来指明成员变量名）。  
+5）this()和super()都指的是对象，所以，均不能在static环境中使用。包括：static变量,static方法，static语句块。  
+6）从本质上讲，this是一个指向本对象的指针, 然而super是一个Java关键字。  
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/04/java易错点总结/" data-id="cimvolebk0007zqel95j6ibw2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-找面包日记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -248,7 +299,7 @@ OceanBase是强一致的。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimupdogo0009dhelxn753ykv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/04/找面包日记/" data-id="cimvolec1000bzqelmgrcjlzf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -303,7 +354,7 @@ OceanBase是强一致的。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimupdog90003dhelmyzx3u92" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/04/03/hadoop源码读书笔记/" data-id="cimvolebh0005zqelzd12h0li" class="article-share-link">Share</a>
       
       
     </footer>
